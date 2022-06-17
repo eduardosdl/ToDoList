@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dfdfdf;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    background: #f0f0f0;
+    width: 70%;
+    min-width: 320px;
+    max-width: 600px;
+    height: 600px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newtask {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 30px 30px 30px;
+}
+
+.newtask input {
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    background: #ffffff;
+    height: 60%;
+    padding-left: 20px;
+}
+
+/* .newtask input:focus{
+    color: #646464;
+    border: none;
+} */
+
+.newtask button {
+    border: none;
+    border-radius: 5px;
+    background: #42cc60;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.newtask button:hover {
+    border: 2px solid white;
+}
+
+.check {
+    width: 15px;
+    height: 15px;
+}
+
+.task {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: auto;
+    justify-content: space-between;
+    margin: 0 10px 10px 10px;
+    background: #e0e0e0;
+}
+
+.delete {
+    border: none;
+    border-radius: 5px;
+    background: #f85050;
+    color: white;
+    width: 5rem;
+    height: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.delete:hover {
+    border: 2px solid white;
+}
+
+.task p {
+    max-width: 400px;
+}
+
+.done {
+    border-top: 3px solid #e0e0e0;
+    padding-top: 10px;
+    margin: 0 10px;
+}
+
+.taskdone {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: auto;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background: #e0e0e0;
+}
+
+.taskdone p {
+    max-width: 400px;
+    text-decoration: line-through;
+}
