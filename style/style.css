@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #dfdfdf;
+    background: linear-gradient(90deg, #b7f8db 0%, #50a7c2 100%);
     height: 100vh;
     font-family: 'Poppins', sans-serif;
 }
@@ -16,7 +16,6 @@ body {
     max-width: 600px;
     height: 600px;
     border-radius: 10px;
-    overflow-y: auto;
 }
 
 .title {
@@ -33,33 +32,51 @@ body {
     padding: 0 30px 30px 30px;
 }
 
-.newtask input {
+.newTaskInput {
     border: none;
     border-radius: 5px;
     width: 70%;
     background: #ffffff;
-    height: 60%;
+    height: 70%;
     padding-left: 20px;
 }
 
-/* .newtask input:focus{
-    color: #646464;
-    border: none;
-} */
+.invalid {
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 70%;
+    background: #ffffff;
+    height: 70%;
+    padding-left: 20px;
+}
 
-.newtask button {
+.invalid::-webkit-input-placeholder {
+    color: red;
+}
+
+.newTaskInput:focus::-webkit-input-placeholder{
+    color: rgb(133, 133, 133);
+}
+
+.newTaskButton {
     border: none;
     border-radius: 5px;
     background: #42cc60;
     color: white;
     width: 5rem;
-    height: 2rem;
+    height: 70%;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.newtask button:hover {
+.newTaskButton:hover {
     border: 2px solid white;
+}
+
+section {
+    height: 26rem;
+    overflow-y: auto;
 }
 
 .check {
@@ -87,6 +104,7 @@ body {
     height: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .delete:hover {
