@@ -54,7 +54,3 @@ function addTask() {
 }
 
 buttonAdd.addEventListener('click', addTask)
-
-/* function checkInput() {
-    
-} */
