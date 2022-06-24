@@ -13,8 +13,8 @@ body {
     background: #f0f0f0;
     width: 70%;
     min-width: 320px;
-    max-width: 600px;
-    height: 600px;
+    max-width: 1000px;
+    height: 90%;
     border-radius: 10px;
 }
 
@@ -29,7 +29,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    padding: 0 30px 30px 30px;
+    padding: 0 45px 30px 45px;
 }
 
 .newTaskInput {
@@ -42,7 +42,7 @@ body {
 }
 
 .invalid {
-    border: 1px solid red;
+    border: 1px solid #ff0000;
     border-radius: 5px;
     width: 70%;
     background: #ffffff;
@@ -51,88 +51,61 @@ body {
 }
 
 .invalid::-webkit-input-placeholder {
-    color: red;
+    color: #ff0000;
 }
 
 .newTaskInput:focus::-webkit-input-placeholder{
     color: rgb(133, 133, 133);
 }
 
+button {
+    border: none;
+    border-radius: 5px;
+    width: 5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid white;
+}
+
 .newTaskButton {
-    border: none;
-    border-radius: 5px;
     background: #42cc60;
-    color: white;
-    width: 5rem;
     height: 70%;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
 }
 
-.newTaskButton:hover {
-    border: 2px solid white;
-}
-
-section {
-    height: 26rem;
-    overflow-y: auto;
-}
-
-.check {
-    width: 15px;
-    height: 15px;
-}
-
-.task {
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    height: auto;
-    justify-content: space-between;
-    margin: 0 10px 10px 10px;
-    background: #e0e0e0;
-}
-
-.delete {
-    border: none;
-    border-radius: 5px;
+.buttonDelete {
     background: #f85050;
-    color: white;
-    width: 5rem;
     height: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
+}
+
+.tasks {
+    height: 25rem;
+    overflow-y: scroll;
+}
+
+.todo, .done {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: auto;
+    margin: 0 10px 10px 10px;
+    border-radius: 5px;
+    background: #e0e0e0;
     cursor: pointer;
 }
 
-.delete:hover {
-    border: 2px solid white;
+p {
+    max-width: 600px;
+    margin-left: 30px;
+    cursor: pointer;
 }
 
-.task p {
-    max-width: 400px;
-}
-
-.done {
-    border-top: 3px solid #e0e0e0;
-    padding-top: 10px;
-    margin: 0 10px;
-}
-
-.taskdone {
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    height: auto;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    background: #e0e0e0;
-}
-
-.taskdone p {
-    max-width: 400px;
+.done p{
+    color:rgb(133, 133, 133);
     text-decoration: line-through;
 }
