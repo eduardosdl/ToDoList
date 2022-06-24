@@ -1,56 +1,65 @@
-/* 
-- verificar o click no botao enviar
-- verificar se tem conteudo no input
-- criar div de task
-- verificar checkbox
-- se ativada trocar a class
-- caso consiga apagar a div da task e criar uma div dnetro de taskdo
-*/
-
+const tasks = document.querySelector('.tasks');
 const buttonAdd = document.querySelector('.newTaskButton');
 const newTaskInput = document.querySelector('.newTaskInput');
 
+// cria o htmlde uma nova tarefa
 function createTask(task) {
-    let div = document.createElement('div');
-    let input = document.createElement('input');
-    let p = document.createElement('p');
-    let button = document.createElement('button');
+    const div = document.createElement('div');
+    const p = document.createElement('p');
+    const button = document.createElement('button');
 
-    div.classList.add('task');
-    input.classList.add('check');
-    button.classList.add('delete');
-    input.setAttribute('type', 'checkbox');
+    div.classList.add('todo');
+    button.classList.add('buttonDelete');
     button.setAttribute('type', 'submit');
 
     p.innerText = task;
     button.innerText = 'delete';
 
-    div.append(input);
     div.append(p);
     div.append(button);
 
     return div;
 }
 
+// cria uma nova tarefa
 function addTask() {
-    let taskToDo = newTaskInput.value.trim();
-    let toDo = document.querySelector('.todo');
+    const taskToDo = newTaskInput.value.trim();
+    const tasks = document.querySelector('.tasks');
+    const divTask = createTask(taskToDo);
 
     if (taskToDo == "") {
         newTaskInput.classList.add('invalid');
-        console.log('ivalid')
         return
     } else {
         newTaskInput.classList.remove('invalid');
-        console.log('valido')
     }
 
-    toDo.prepend(createTask(taskToDo));
-    console.log('criado')
+    tasks.prepend(divTask);
 
     newTaskInput.value = "";
-    console.log('zerado');
-    
 }
 
-buttonAdd.addEventListener('click', addTask)
+// evento para identificar o click
+buttonAdd.addEventListener('click', addTask);
+// evento para identificar o 'enter'
+newTaskInput.addEventListener('keypress', (ev) => {
+    if(ev.key == 'Enter') {
+        addTask();
+    }
+});
+
+// envento para conclusao e exclusao de de tarefa
+tasks.addEventListener('click', function(ev) {
+    const tagClicked = ev.target.tagName;
+    const tagFather = ev.target.parentNode;
+
+    if(tagClicked === "INPUT" || tagClicked === "P") {
+        tagFather.classList.toggle('done');
+    } else if (tagClicked === "DIV") {
+        ev.target.classList.toggle('done');
+    } else if (tagClicked === "BUTTON") {
+        tagFather.style.display = 'none';
+    }
+});
+
+buttonAdd.addEventListener('click', addTask);
