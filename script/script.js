@@ -1,6 +1,9 @@
 const tasks = document.querySelector('.tasks');
 const buttonAdd = document.querySelector('.newTaskButton');
 const newTaskInput = document.querySelector('.newTaskInput');
+const keys = Object.keys(localStorage);
+
+keys.forEach(key => addTask(key));
 
 // cria o htmlde uma nova tarefa
 function createTask(task) {
@@ -9,6 +12,9 @@ function createTask(task) {
     const button = document.createElement('button');
 
     div.classList.add('todo');
+    if(localStorage.getItem(task) === 'true') {
+        div.classList.add('done');
+    }
     button.classList.add('buttonDelete');
     button.setAttribute('type', 'submit');
 
@@ -22,12 +28,11 @@ function createTask(task) {
 }
 
 // cria uma nova tarefa
-function addTask() {
-    const taskToDo = newTaskInput.value.trim();
+function addTask(task) {
     const tasks = document.querySelector('.tasks');
-    const divTask = createTask(taskToDo);
+    const divTask = createTask(task);
 
-    if (taskToDo == "") {
+    if (!task) {
         newTaskInput.classList.add('invalid');
         return
     } else {
@@ -40,26 +45,46 @@ function addTask() {
 }
 
 // evento para identificar o click
-buttonAdd.addEventListener('click', addTask);
+buttonAdd.addEventListener('click', () => {
+    const taskToDo = newTaskInput.value.trim();
+
+    localStorage.setItem(taskToDo, false);
+    addTask(taskToDo);
+});
+    
 // evento para identificar o 'enter'
 newTaskInput.addEventListener('keypress', (ev) => {
-    if(ev.key == 'Enter') {
-        addTask();
+    if (ev.key == 'Enter') {
+        const taskToDo = newTaskInput.value.trim();
+
+        localStorage.setItem(taskToDo, false);
+        addTask(taskToDo);
     }
 });
 
 // envento para conclusao e exclusao de de tarefa
-tasks.addEventListener('click', function(ev) {
+tasks.addEventListener('click', function (ev) {
     const tagClicked = ev.target.tagName;
     const tagFather = ev.target.parentNode;
 
-    if(tagClicked === "INPUT" || tagClicked === "P") {
+    if (tagClicked === "INPUT" || tagClicked === "P") {
         tagFather.classList.toggle('done');
+        if (tagFather.classList.value === "todo done") {
+            localStorage.setItem(tagFather.children[0].innerText, true);
+        } else {
+            localStorage.setItem(tagFather.children[0].innerText, false);
+        }
     } else if (tagClicked === "DIV") {
         ev.target.classList.toggle('done');
+        if (ev.target.classList.value === "todo done") {
+            localStorage.setItem(ev.target.children[0].innerText, true);
+        } else {
+            localStorage.setItem(ev.target.children[0].innerText, false);
+        }
     } else if (tagClicked === "BUTTON") {
         tagFather.style.display = 'none';
+        localStorage.removeItem(tagFather.children[0].innerText);
     }
 });
 
-buttonAdd.addEventListener('click', addTask);
+// buttonAdd.addEventListener('click', addTask);

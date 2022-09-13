@@ -75,6 +75,7 @@ button:hover {
 .newTaskButton {
     background: #42cc60;
     height: 70%;
+    margin-left: 10px;
 }
 
 .buttonDelete {
@@ -83,11 +84,11 @@ button:hover {
 }
 
 .tasks {
-    height: 25rem;
+    height: 65%;
     overflow-y: scroll;
 }
 
-.todo, .done {
+.todo {
     display: flex;
     align-items: center;
     justify-content: space-between;
