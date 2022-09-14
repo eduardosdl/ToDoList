@@ -1,6 +1,7 @@
 const tasks = document.querySelector('.tasks');
 const buttonAdd = document.querySelector('.newTaskButton');
 const newTaskInput = document.querySelector('.newTaskInput');
+const buttonDelete = document.querySelector('.buttonDelete');
 const keys = Object.keys(localStorage);
 
 keys.forEach(key => addTask(key));
@@ -62,6 +63,15 @@ newTaskInput.addEventListener('keypress', (ev) => {
     }
 });
 
+// verifica se a tarefa foi concluida
+function checkTaskDone (tagClicked) {
+    if (tagClicked.classList.value === "todo done") {
+        localStorage.setItem(tagClicked.children[0].innerText, true);
+    } else {
+        localStorage.setItem(tagClicked.children[0].innerText, false);
+    }
+}
+
 // envento para conclusao e exclusao de de tarefa
 tasks.addEventListener('click', function (ev) {
     const tagClicked = ev.target.tagName;
@@ -69,22 +79,12 @@ tasks.addEventListener('click', function (ev) {
 
     if (tagClicked === "INPUT" || tagClicked === "P") {
         tagFather.classList.toggle('done');
-        if (tagFather.classList.value === "todo done") {
-            localStorage.setItem(tagFather.children[0].innerText, true);
-        } else {
-            localStorage.setItem(tagFather.children[0].innerText, false);
-        }
+        checkTaskDone(tagFather);
     } else if (tagClicked === "DIV") {
         ev.target.classList.toggle('done');
-        if (ev.target.classList.value === "todo done") {
-            localStorage.setItem(ev.target.children[0].innerText, true);
-        } else {
-            localStorage.setItem(ev.target.children[0].innerText, false);
-        }
+        checkTaskDone(ev.target);
     } else if (tagClicked === "BUTTON") {
         tagFather.style.display = 'none';
         localStorage.removeItem(tagFather.children[0].innerText);
     }
 });
-
-// buttonAdd.addEventListener('click', addTask);
