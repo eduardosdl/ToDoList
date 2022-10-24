@@ -1,7 +1,6 @@
 const tasks = document.querySelector('.tasks');
 const buttonAdd = document.querySelector('.newTaskButton');
 const newTaskInput = document.querySelector('.newTaskInput');
-const buttonDelete = document.querySelector('.buttonDelete');
 const keys = Object.keys(localStorage);
 
 keys.forEach(key => addTask(key));
@@ -40,7 +39,11 @@ function addTask(task) {
         newTaskInput.classList.remove('invalid');
     }
 
-    tasks.prepend(divTask);
+    if(localStorage.getItem(task) === 'true') {
+        tasks.append(divTask);
+    } else {
+        tasks.prepend(divTask);
+    }
 
     newTaskInput.value = "";
 }
